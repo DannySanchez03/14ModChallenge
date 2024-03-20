@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Dashboard</h2>
+        <a href="/newpost" class="button">New Post</a>
+        <ul>
+            {{#each posts}}
+            <li>
+                <a href="/post/{{this.id}}">
+                    <h3>{{this.title}}</h3>
+                </a>
+                <p>Posted on {{formatDate this.createdAt}}</p>
+                <a href="/editpost/{{this.id}}" class="button">Edit</a>
+                <form action="/deletepost/{{this.id}}" method="POST">
+                    <button type="submit" class="button" onclick="return confirm('Are you sure you want to delete this post?')">Delete</button>
+                </form>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+
+    <script src="/js/script.js"></script>
+</body>
+
+</html>
