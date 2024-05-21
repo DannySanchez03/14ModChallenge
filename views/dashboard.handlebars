@@ -1,34 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-
-<body>
-    <div class="container">
-        <h2>Dashboard</h2>
-        <a href="/newpost" class="button">New Post</a>
-        <ul>
-            {{#each posts}}
-            <li>
-                <a href="/post/{{this.id}}">
-                    <h3>{{this.title}}</h3>
-                </a>
-                <p>Posted on {{formatDate this.createdAt}}</p>
-                <a href="/editpost/{{this.id}}" class="button">Edit</a>
-                <form action="/deletepost/{{this.id}}" method="POST">
-                    <button type="submit" class="button" onclick="return confirm('Are you sure you want to delete this post?')">Delete</button>
-                </form>
-            </li>
-            {{/each}}
-        </ul>
-    </div>
-
-    <script src="/js/script.js"></script>
-</body>
-
-</html>
+<!-- ./ Main -->
+<div class="container">
+    <h1>Dashboard</h1>
+    <a href="/dashboard/new"><button>Add New Post +</button></a>
+    {{#each posts}}
+      <h3>{{title}}</h3>
+      <p>Created by: {{user.username}} | Date: {{format_date createdAt}}</p>
+      <p>{{content}}</p>
+      <a href="/edit-post/{{id}}"><button id="edit-post">Edit Blog Post</button></a>
+      <button id="delete-post" data-typeid="{{id}}">Remove</button>
+    {{/each}}
+</div>
+<script src="/js/deletePost.js"></script>

@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="grid">
+    <h3>Edit Blog Post</h3>
+    <form id="update-post-form">
+      <input type="hidden" value="{{post.id}}" id="postId">
+      <div>
+        <label for="update-title">Blog Title</label>
+        <input
+          type="text"
+          id="update-title"
+          placeholder="Update Title"
+          value="{{post.title}}"
+        />
+      </div>
+      <div>
+        <label for="update-post">Blog Content</label>
+        <textarea
+          id="update-post"
+          rows="2"
+          placeholder="Update Post"
+        >{{post.content}}</textarea>
+      </div>
+      <button type="submit" >Update Post</button>
+    </form>
+  </div>
+</div>
+<script src="/js/editPost.js"></script>

@@ -1,23 +1,12 @@
-// Import any necessary dependencies
-const moment = require('moment');
-
-// Define helper functions
 module.exports = {
-    // Format a date using Moment.js
-    formatDate: function(date) {
-        return moment(date).format('MMMM Do YYYY, h:mm:ss a');
-    },
-    // Truncate text to a specified length
-    truncateText: function(text, length) {
-        if (text.length > length) {
-            return text.substring(0, length) + '...';
-        } else {
-            return text;
-        }
-    },
-    // Check if two values are equal
-    isEqual: function(value1, value2) {
-        return value1 === value2;
-    },
-    // Add more helper functions as needed
+  format_date: (date) => {
+    // Format date and time information to MM/DD/YYYY HH:mm
+    const d = new Date(date);
+    const formattedDate = `${d.getMonth() + 1}/${d.getDate()}/${d.getFullYear()}`;
+    const hours = d.getHours().toString().padStart(2, '0');
+    const minutes = d.getMinutes().toString().padStart(2, '0');
+    const formattedTime = `${hours}:${minutes}`;
+    
+    return `${formattedDate} at ${formattedTime}`;
+  },
 };

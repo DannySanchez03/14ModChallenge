@@ -1,0 +1,8 @@
+<div class="container">
+  {{#each posts}}
+    <article class="grid">
+      <h3><a href="/post/{{id}}">{{title}}</a></h3>
+      <p>Created by: {{user.username}} | Date: {{format_date createdAt}}</p>
+      <p>{{content}}</p>
+    </article>{{/each}}
+</div>

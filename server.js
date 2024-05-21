@@ -4,26 +4,20 @@ const session = require('express-session');
 const path = require('path');
 const routes = require('./controllers');
 const exphbs = require('express-handlebars');
+const helpers = require('./utils/helpers');
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-
+require('dotenv').config();
 // Create an Express application instance
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Configure Handlebars templating engine
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
-app.set('view engine', 'handlebars');
-
-const hbs = exphbs.create({
-    helpers: {
-      ...helpers,
-    }
-});
+const hbs = exphbs.create({ helpers });
 
 // Middleware for session management with Sequelize store
 const sess = {
     secret: process.env.SESSION_SECRET,
+    cookie: {},
     resave: false,
     saveUninitialized: true,
     store: new SequelizeStore({
@@ -33,6 +27,10 @@ const sess = {
 
 // Set up session middleware
 app.use(session(sess));
+
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
+
 
 // Middleware to parse JSON and URL-encoded form data
 app.use(express.json());

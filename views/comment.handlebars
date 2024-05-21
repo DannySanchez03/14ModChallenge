@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="grid">
+    <h3>{{post.title}}</h3>
+    <p>Created by: {{post.user.username}} | Date: {{format_date post.createdAt}}</p>
+    <p>{{post.content}}</p>
+  </div>
+  {{#if logged_in}}
+
+    <form id="comment">
+
+      <input
+        id="content"
+        type="text"
+        name="text"
+        placeholder="Add Comments"
+        aria-label="Text"
+      />
+
+      <button type="submit">Submit</button>
+    </form>
+
+  {{/if}}
+  <h5>Previous Comments</h5>
+  {{#each post.comments}}
+    <div>
+      <p>{{this.commentary}}</p>
+      <p> By {{this.user.username}} on {{format_date this.createdAt}}</p>
+    </div>
+  {{/each}}
+</div>
+{{#if logged_in}}
+  <script src="/js/newComment.js"></script>
+{{/if}}

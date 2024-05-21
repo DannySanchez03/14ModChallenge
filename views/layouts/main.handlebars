@@ -1,37 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Tech Blog</title>
+    <meta
+      name="A blog for the tech community"
+      content="Tech Blog"
+    />
+    <!-- Pico.css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.0.6/css/pico.min.css"/>
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Tech Blog</title>
-    <!-- Include any CSS files -->
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-
-<body>
-    <nav>
+  <body style="background-image: linear-gradient(rgb(255, 206, 191), rgb(145, 75, 28)); height:100vh; ">
+    <!-- Header -->
+    <header class="container">
+      <nav style="border-bottom: black 2px solid;">
         <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/dashboard">Dashboard</a></li>
-            {{#if isAuthenticated}}
-                <!-- Display logout button if user is authenticated -->
-                <li><a href="/logout">Logout</a></li>
-            {{else}}
-                <!-- Display login button if user is not authenticated -->
-                <li><a href="/login">Login</a></li>
-            {{/if}}
-            <!-- Add more navigation links as needed -->
+          <li><h1>Tech Blog</h1></li>
         </ul>
-    </nav>
-
-    <!-- Main content area -->
-    <div class="container">
-        {{{body}}}
-    </div>
-
-    <!-- Include any JavaScript files -->
-    <script src="/js/script.js"></script>
-</body>
-
+        <ul>
+          <li><a href="/" class="contrast">Home</a></li>
+          <li><a href="/dashboard" class="contrast">Dashboard</a></li>
+          {{#if logged_in}}
+          <li><a href="#" class="contrast" id="logout">Logout</a></li>
+          {{else}}
+          <li><a href="/login" class="contrast">Login</a></li>
+          <li><a href="/signup" class="contrast">Sign Up</a></li>
+          {{/if}}
+        </ul>
+      </nav>
+    </header>
+    <!-- ./ Header -->
+    <!-- ./ Main -->
+    <main class="container">
+      <div>{{{body}}}</div>
+    </main>
+    <!-- ./ Main -->
+{{#if logged_in}}
+    <script src="/js/logout.js"></script>
+    {{/if}}
 </html>

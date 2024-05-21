@@ -1,12 +1,11 @@
-# 14ModChallenge The Tech Blog Post
-Module 14 Challenge
-# Employee DataBase
+# The Tech Blog Post
+13th Challenge
 
-github: https://github.com/DannySanchez03/14ModChallenge
+deployed: [here](https://github.com/DannySanchez03/)
 
 ## Description
 
-In this Module 14 Challenge we were told to create application where users can interact with eachothers post.
+In this 13th Challenge I had to get familiar with using handlebars and handling fetch requests and setting up RESTful API's for the backend to recieve and pass the data over to the front end, this application lets you talk with with fellow Techies in subjects about tech. Other packages used for this application were MySQL and Express.
 
 ## Installation
 
