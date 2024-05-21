@@ -1,7 +1,7 @@
 # The Tech Blog Post
 13th Challenge
 
-deployed: [here](https://github.com/DannySanchez03/)
+deployed: [here](https://tech-blog-post-b2375f543ec7.herokuapp.com/)
 
 ## Description
 
