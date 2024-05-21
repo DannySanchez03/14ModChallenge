@@ -8,6 +8,7 @@ const helpers = require('./utils/helpers');
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 require('dotenv').config();
+
 // Create an Express application instance
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -16,7 +17,7 @@ const hbs = exphbs.create({ helpers });
 
 // Middleware for session management with Sequelize store
 const sess = {
-    secret: process.env.SESSION_SECRET,
+    secret: "Super secret secret",
     cookie: {},
     resave: false,
     saveUninitialized: true,
@@ -31,6 +32,8 @@ app.use(session(sess));
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
+console.log('Views directory:', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'views'));
 
 // Middleware to parse JSON and URL-encoded form data
 app.use(express.json());
